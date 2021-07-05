@@ -24,6 +24,12 @@ begin
       Filename := Filename + ' ' + ParamStr (i);
     Delete (Filename, 1, 1);
 
+    if (Filename[1] = '"') and (Filename[Length (Filename)] = '"') then
+    begin
+      Delete (Filename, 1, 1);
+      Delete (Filename, Length (Filename), 1);
+    end;
+
     AssignFile (F, Filename);
     T := '';
     try
